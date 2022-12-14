@@ -1,0 +1,760 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+{% if user.is_authenticated %}
+{% verbatim %}
+<div id="app">
+<h3>INVENTORY</h3>
+<hr class="dark horizontal my-0">
+<br>
+<div class="row">
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-3 pt-2">
+          <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+            <i class="material-icons opacity-10">donut_small</i>
+          </div>
+          <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">JS 335</p>
+            <h4 class="mb-0">{{ js_335_qty }} Qtl.</h4>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0">
+        <div class="card-footer p-3">
+          <p class="mb-0"><span class="text-primary text-sm font-weight-bolder">{{ js_335_investment }} ₹  </span>Invested. <div><span class="text-primary text-sm font-weight-bolder">{{ (js_335_investment / js_335_qty).toFixed(2) }} ₹</span> Avg. Buy</div></p>
+          <hr class="dark horizontal my-0">          
+          <div class="input-group input-group-static mb-4">
+              <label>Current Price:</label>
+              <input v-model="js_335_current_price" type="number" class="form-control">
+          </div> 
+        <p class="mb-0">Profit :- <span class="text-success text-sm font-weight-bolder">{{ (js_335_current_price * js_335_qty) - js_335_investment }} ₹</span></p>
+        <p class="mb-0"><span class="text-success text-sm font-weight-bolder"> {{ (((js_335_current_price * js_335_qty - js_335_investment) / js_335_investment) * 100).toFixed(2) }}% </span>Gain on Investment</p>        
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-3 pt-2">
+          <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+            <i class="material-icons opacity-10">dns</i>
+          </div>
+          <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">KDS 726</p>
+            <h4 class="mb-0">{{ kds_726_qty }} Qtl.</h4>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0">
+        <div class="card-footer p-3">
+            <p class="mb-0"><span class="text-primary text-sm font-weight-bolder">{{ kds_726_investment }} ₹ </span>Invested. <div><span class="text-primary text-sm font-weight-bolder">{{ (kds_726_investment / kds_726_qty).toFixed(2) }} ₹</span> Avg. Buy</div></p>
+            <hr class="dark horizontal my-0">       
+            <div class="input-group input-group-static mb-4">
+                <label>No. of Seed Bags:</label>
+                <input v-model="kds_726_bags" type="number" class="form-control">
+            </div> 
+            <div class="input-group input-group-static mb-4">
+                <label>Seed Bag Price:</label>
+                <input v-model="kds_726_bag_price" type="number" class="form-control">
+            </div> 
+          <p class="mb-0">Profit :- <span class="text-success text-sm font-weight-bolder">{{ kds_726_bags * kds_726_bag_price - kds_726_investment }} ₹</span></p>
+          <p class="mb-0"><span class="text-success text-sm font-weight-bolder"> {{ (((kds_726_bags * kds_726_bag_price - kds_726_investment) / kds_726_investment) * 100).toFixed(2) }} % </span>Gain on Investment</p>        
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-3 pt-2">
+          <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+            <i class="material-icons opacity-10">donut_large</i>
+          </div>
+          <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">KDS 753</p>
+            <h4 class="mb-0">{{ kds_753_qty }} Qtl.</h4>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0"> 
+        <div class="card-footer p-3">
+            <p class="mb-0"><span class="text-primary text-sm font-weight-bolder">{{ kds_753_investment }} ₹ </span>Invested. <div><span class="text-primary text-sm font-weight-bolder">{{ (kds_753_investment / kds_753_qty).toFixed(2) }} ₹ </span> Avg. Buy</div></p>
+            <hr class="dark horizontal my-0">          
+            <div class="input-group input-group-static mb-4">
+                <label>No. of Seed Bags:</label>
+                <input v-model="kds_753_bags" type="number" class="form-control">
+            </div> 
+            <div class="input-group input-group-static mb-4">
+                <label>Seed Bag Price:</label>
+                <input v-model="kds_753_bag_price" type="number" class="form-control">
+            </div>
+          <p class="mb-0">Profit :- <span class="text-success text-sm font-weight-bolder">{{ kds_753_bags * kds_753_bag_price - kds_753_investment }} ₹</span></p>
+          <p class="mb-0"><span class="text-success text-sm font-weight-bolder"> {{ (((kds_753_bags * kds_753_bag_price - kds_753_investment) / kds_753_investment) * 100).toFixed(2) }} % </span>Gain on Investment</p>        
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+      <div class="card">
+        <div class="card-header p-3 pt-2">
+          <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+            <i class="material-icons opacity-10">dvr</i>
+          </div>
+          <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">MACS 1460</p>
+            <h4 class="mb-0">{{ macs_1460_qty }} Qtl</h4>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0">
+        <div class="card-footer p-3">
+            <p class="mb-0"><span class="text-primary text-sm font-weight-bolder">{{ macs_1460_investment }} ₹ </span>Invested. <div><span class="text-primary text-sm font-weight-bolder">{{ (macs_1460_investment / macs_1460_qty).toFixed(2) }} ₹ </span> Avg. Buy</div></p>
+            <hr class="dark horizontal my-0">          
+            <div class="input-group input-group-static mb-4">
+                <label>No. of Seed Bags:</label>
+                <input v-model="macs_1460_bags" type="number" class="form-control">
+            </div> 
+            <div class="input-group input-group-static mb-4">
+                <label>Seed Bag Price:</label>
+                <input v-model="macs_1460_bag_price" type="number" class="form-control">
+            </div>
+          <p class="mb-0">Profit :- <span class="text-success text-sm font-weight-bolder">{{ macs_1460_bags * macs_1460_bag_price - macs_1460_investment }} ₹</span></p>
+          <p class="mb-0"><span class="text-success text-sm font-weight-bolder">{{ (((macs_1460_bags * macs_1460_bag_price - macs_1460_investment) / macs_1460_investment) * 100).toFixed(2) }} % </span>Gain on Investment</p>        
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<br>
+<hr class="dark horizontal my-0">
+
+<h3>PURCHASE</h3>
+<hr class="dark horizontal my-0">
+
+<div class="row mt-4">
+    <div class="col-lg-4 col-md-6 mt-4 mb-4">
+      <div class="card z-index-2 ">
+        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+          <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
+            <div class="chart">
+              <canvas id="js335_Chart" class="chart-canvas" height="170"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h6 class="mb-0 ">JS 335</h6>
+          <!-- <p class="text-sm ">Last Campaign Performance</p> -->
+          <hr class="dark horizontal">
+          <div class="d-flex ">
+            <!-- <i class="material-icons text-sm my-auto me-1">schedule</i>
+            <p class="mb-0 text-sm"> campaign sent 2 days ago </p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 mt-4 mb-4">
+      <div class="card z-index-2  ">
+        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+          <div class="bg-gradient-success shadow-success border-radius-lg py-3 pe-1">
+            <div class="chart">
+              <canvas id="kds726_Chart" class="chart-canvas" height="170"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h6 class="mb-0 "> KDS 726 </h6>
+          <!-- <p class="text-sm "> (<span class="font-weight-bolder">+15%</span>) increase in today sales. </p> -->
+          <hr class="dark horizontal">
+          <div class="d-flex ">
+            <!-- <i class="material-icons text-sm my-auto me-1">schedule</i>
+            <p class="mb-0 text-sm"> updated 4 min ago </p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 mt-4 mb-3">
+      <div class="card z-index-2 ">
+        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+          <div class="bg-gradient-warning shadow-warning border-radius-lg py-3 pe-1">
+            <div class="chart">
+              <canvas id="kds753_Chart" class="chart-canvas" height="170"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h6 class="mb-0 ">KDS 753</h6>
+          <!-- <p class="text-sm ">Last Campaign Performance</p> -->
+          <hr class="dark horizontal">
+          <div class="d-flex ">
+            <!-- <i class="material-icons text-sm my-auto me-1">schedule</i>
+            <p class="mb-0 text-sm">just updated</p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 mt-4 mb-3">
+        <div class="card z-index-2 ">
+          <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+            <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
+              <div class="chart">
+                <canvas id="macs1460_Chart" class="chart-canvas" height="170"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h6 class="mb-0 ">MACS 1460</h6>
+            <!-- <p class="text-sm ">Last Campaign Performance</p> -->
+            <hr class="dark horizontal">
+            <div class="d-flex ">
+              <!-- <i class="material-icons text-sm my-auto me-1">schedule</i>
+              <p class="mb-0 text-sm">just updated</p> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="col-lg-4 mt-4 mb-3">
+        <div class="card mb-3">
+            <div class="card-body p-3">
+              <div class="chart">
+                <canvas id="doughnut-chart" class="chart-canvas" height="300px"></canvas>
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+    <br>
+    <hr class="dark horizontal my-0">
+
+</div>
+{% endverbatim %}
+
+    <script>
+        console.log(`Vue version : ${Vue.version}`);
+        const { createApp } = Vue
+        createApp({
+          data() {
+            return {
+              purchases: [],
+              kds_726: [],
+              kds_753: [],
+              macs_1460: [],
+              js_335: [],
+              kds_726_qty: 0,
+              kds_753_qty: 0,
+              macs_1460_qty: 0,
+              js_335_qty: 0,
+              kds_726_investment: 0,
+              kds_753_investment: 0,
+              macs_1460_investment: 0,
+              js_335_investment: 0,
+              kds_726_bags: 0, 
+              kds_726_bag_price: 4000,
+              js_335_current_price: 0,
+              kds_753_bags: 0, 
+              kds_753_bag_price: 4000,
+              macs_1460_bags: 0, 
+              macs_1460_bag_price: 4000,
+              labels_335 : [],
+              data_335 : [],
+              labels_726 : [],
+              data_726 : [],
+              labels_753 : [],
+              data_753 : [],
+              labels_1460 : [],
+              data_1460 : [],
+            }
+          },
+          mounted() {
+            axios
+              .get('/soybean_metrics/get_purchase')
+              .then((response) => {
+                this.purchases = JSON.parse(response.data);
+                for (var i = 0; i < this.purchases.length; i++){
+                  var obj = this.purchases[i];
+                  if (obj['fields']['variety'] === '335') {
+                    this.js_335.push(obj['fields']);
+                    this.js_335_qty += obj['fields']['quantity'];
+                    this.js_335_investment += obj['fields']['total_payment'];
+                  }
+                  if (obj['fields']['variety'] === '726') {
+                    this.kds_726.push(obj['fields']);
+                    this.kds_726_qty += obj['fields']['quantity'];
+                    this.kds_726_investment += obj['fields']['total_payment'];
+                    this.kds_726_bags = this.kds_726_qty*3;
+                    console.log(this.kds_726_qty);
+                    console.log(this.kds_726_investment);
+                  }
+                  if (obj['fields']['variety'] === '753') {
+                    this.kds_753.push(obj['fields']);
+                    this.kds_753_qty += obj['fields']['quantity'];
+                    this.kds_753_investment += obj['fields']['total_payment'];
+                    this.kds_753_bags = this.kds_753_qty*3;
+                    console.log(this.kds_753_qty);
+                    console.log(this.kds_753_investment);
+                  }
+                  if (obj['fields']['variety'] === '1460') {
+                    this.macs_1460.push(obj['fields']);
+                    this.macs_1460_qty += obj['fields']['quantity'];
+                    this.macs_1460_investment += obj['fields']['total_payment'];
+                    this.macs_1460_bags = this.macs_1460_qty*3;
+                    console.log(this.macs_1460_qty);
+                    console.log(this.macs_1460_investment);
+                  }
+                }
+
+                // Plotting Charts
+                const ctx = document.getElementById('doughnut-chart');
+
+                new Chart(ctx, {
+                  type: 'doughnut',
+                  data: {
+                    labels: ['JS 335', 'KDS 726', 'KDS 753', 'MACS 1460'],
+                    datasets: [{
+                      label: 'Qty in Qtls.',
+                      data: [this.js_335_qty, this.kds_726_qty, this.kds_753_qty, this.macs_1460_qty],
+                      borderWidth: 1,
+                      backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)',
+                        'rgb(170, 61, 224)',
+                      ],
+                    }]
+                  },
+                  options: {
+                    scales: {
+                      y: {
+                        beginAtZero: true
+                      }
+                    }
+                  }
+                });
+
+                // MACS 1460
+                const ctx_1460 = document.getElementById('macs1460_Chart');
+                console.log(this.macs_1460);
+                this.macs_1460.sort((a, b) => {
+                  return new Date(a.purchase_date) - new Date(b.purchase_date); // descending
+                })
+                console.log(this.macs_1460);
+                var result = [];
+                this.macs_1460.reduce(function(res, value) {
+                  if (!res[value.purchase_date]) {
+                    res[value.purchase_date] = { purchase_date: value.purchase_date, quantity: 0 };
+                    result.push(res[value.purchase_date])
+                  }
+                  res[value.purchase_date].quantity += value.quantity;
+                  return res;
+                }, {});
+                this.macs_1460 = result;
+                for (var i = 0; i < this.macs_1460.length; i++){
+                  purchase_qty  = this.macs_1460[i]['quantity'];
+                  purchase_date = this.macs_1460[i]['purchase_date'];
+                  const [year, month, day] = purchase_date.split('-');
+                  purchase_date = day + '-' + month + '-' + year;
+                  this.labels_1460.push(purchase_date);
+                  this.data_1460.push(purchase_qty);
+                };
+
+                new Chart(ctx_1460, {
+                  type: 'bar',
+                  data: {
+                    labels: this.labels_1460,
+                    datasets: [{
+                      label: 'Qty. in Qtls.',
+                      tension: 0.4,
+                      data: this.data_1460,
+                      borderWidth: 0,
+                      borderRadius: 4,
+                      borderSkipped: false,
+                      backgroundColor: "rgba(255, 255, 255, .8)",
+                      maxBarThickness: 40
+                    }]
+                  },
+                  options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                      legend: {
+                        display: false,
+                      }
+                    },
+                    interaction: {
+                      intersect: false,
+                      mode: 'index',
+                    },
+                    scales: {
+                      y: {
+                        grid: {
+                          drawBorder: false,
+                          display: true,
+                          drawOnChartArea: true,
+                          drawTicks: false,
+                          borderDash: [5, 5],
+                          color: 'rgba(255, 255, 255, .2)'
+                        },
+                        ticks: {
+                          suggestedMin: 0,
+                          suggestedMax: 500,
+                          beginAtZero: true,
+                          padding: 10,
+                          font: {
+                            size: 14,
+                            weight: 300,
+                            family: "Roboto",
+                            style: 'normal',
+                            lineHeight: 2
+                          },
+                          color: "#fff"
+                        },
+                      },
+                      x: {
+                        grid: {
+                          drawBorder: false,
+                          display: true,
+                          drawOnChartArea: true,
+                          drawTicks: false,
+                          borderDash: [5, 5],
+                          color: 'rgba(255, 255, 255, .2)'
+                        },
+                        ticks: {
+                          display: true,
+                          color: '#f8f9fa',
+                          padding: 10,
+                          font: {
+                            size: 14,
+                            weight: 300,
+                            family: "Roboto",
+                            style: 'normal',
+                            lineHeight: 2
+                          },
+                        }
+                      },
+                    },
+                  },
+                });
+
+
+                //KDS 753 Purchase Chart
+                const ctx_753 = document.getElementById('kds753_Chart');
+                console.log(this.kds_753);
+                this.kds_753.sort((a, b) => {
+                  return new Date(a.purchase_date) - new Date(b.purchase_date); // descending
+                })
+                console.log(this.kds_753);
+                var result = [];
+                this.kds_753.reduce(function(res, value) {
+                  if (!res[value.purchase_date]) {
+                    res[value.purchase_date] = { purchase_date: value.purchase_date, quantity: 0 };
+                    result.push(res[value.purchase_date])
+                  }
+                  res[value.purchase_date].quantity += value.quantity;
+                  return res;
+                }, {});
+                this.kds_753 = result;
+                for (var i = 0; i < this.kds_753.length; i++){
+                  purchase_qty  = this.kds_753[i]['quantity'];
+                  purchase_date = this.kds_753[i]['purchase_date'];
+                  const [year, month, day] = purchase_date.split('-');
+                  purchase_date = day + '-' + month + '-' + year;
+                  this.labels_753.push(purchase_date);
+                  this.data_753.push(purchase_qty);
+                };
+
+                new Chart(ctx_753, {
+                  type: 'bar',
+                  data: {
+                    labels: this.labels_753,
+                    datasets: [{
+                      label: 'Qty. in Qtls.',
+                      tension: 0.4,
+                      data: this.data_753,
+                      borderWidth: 0,
+                      borderRadius: 4,
+                      borderSkipped: false,
+                      backgroundColor: "rgba(255, 255, 255, .8)",
+                      maxBarThickness: 40
+                    }]
+                  },
+                  options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                      legend: {
+                        display: false,
+                      }
+                    },
+                    interaction: {
+                      intersect: false,
+                      mode: 'index',
+                    },
+                    scales: {
+                      y: {
+                        grid: {
+                          drawBorder: false,
+                          display: true,
+                          drawOnChartArea: true,
+                          drawTicks: false,
+                          borderDash: [5, 5],
+                          color: 'rgba(255, 255, 255, .2)'
+                        },
+                        ticks: {
+                          suggestedMin: 0,
+                          suggestedMax: 500,
+                          beginAtZero: true,
+                          padding: 10,
+                          font: {
+                            size: 14,
+                            weight: 300,
+                            family: "Roboto",
+                            style: 'normal',
+                            lineHeight: 2
+                          },
+                          color: "#fff"
+                        },
+                      },
+                      x: {
+                        grid: {
+                          drawBorder: false,
+                          display: true,
+                          drawOnChartArea: true,
+                          drawTicks: false,
+                          borderDash: [5, 5],
+                          color: 'rgba(255, 255, 255, .2)'
+                        },
+                        ticks: {
+                          display: true,
+                          color: '#f8f9fa',
+                          padding: 10,
+                          font: {
+                            size: 14,
+                            weight: 300,
+                            family: "Roboto",
+                            style: 'normal',
+                            lineHeight: 2
+                          },
+                        }
+                      },
+                    },
+                  },
+                });
+
+
+
+                //KDS 726 Purchase Chart
+                const ctx_726 = document.getElementById('kds726_Chart');
+                console.log(this.kds_726);
+                this.kds_726.sort((a, b) => {
+                  return new Date(a.purchase_date) - new Date(b.purchase_date); // descending
+                })
+                console.log(this.kds_726);
+                var result = [];
+                this.kds_726.reduce(function(res, value) {
+                  if (!res[value.purchase_date]) {
+                    res[value.purchase_date] = { purchase_date: value.purchase_date, quantity: 0 };
+                    result.push(res[value.purchase_date])
+                  }
+                  res[value.purchase_date].quantity += value.quantity;
+                  return res;
+                }, {});
+                this.kds_726 = result;
+                for (var i = 0; i < this.kds_726.length; i++){
+                  purchase_qty  = this.kds_726[i]['quantity'];
+                  purchase_date = this.kds_726[i]['purchase_date'];
+                  const [year, month, day] = purchase_date.split('-');
+                  purchase_date = day + '-' + month + '-' + year;
+                  this.labels_726.push(purchase_date);
+                  this.data_726.push(purchase_qty);
+                };
+                
+                new Chart(ctx_726, {
+                  type: 'bar',
+                  data: {
+                    labels: this.labels_726,
+                    datasets: [{
+                      label: 'Qty. in Qtls.',
+                      tension: 0.4,
+                      data: this.data_726,
+                      borderWidth: 0,
+                      borderRadius: 4,
+                      borderSkipped: false,
+                      backgroundColor: "rgba(255, 255, 255, .8)",
+                      maxBarThickness: 40
+                    }]
+                  },
+                  options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                      legend: {
+                        display: false,
+                      }
+                    },
+                    interaction: {
+                      intersect: false,
+                      mode: 'index',
+                    },
+                    scales: {
+                      y: {
+                        grid: {
+                          drawBorder: false,
+                          display: true,
+                          drawOnChartArea: true,
+                          drawTicks: false,
+                          borderDash: [5, 5],
+                          color: 'rgba(255, 255, 255, .2)'
+                        },
+                        ticks: {
+                          suggestedMin: 0,
+                          suggestedMax: 500,
+                          beginAtZero: true,
+                          padding: 10,
+                          font: {
+                            size: 14,
+                            weight: 300,
+                            family: "Roboto",
+                            style: 'normal',
+                            lineHeight: 2
+                          },
+                          color: "#fff"
+                        },
+                      },
+                      x: {
+                        grid: {
+                          drawBorder: false,
+                          display: true,
+                          drawOnChartArea: true,
+                          drawTicks: false,
+                          borderDash: [5, 5],
+                          color: 'rgba(255, 255, 255, .2)'
+                        },
+                        ticks: {
+                          display: true,
+                          color: '#f8f9fa',
+                          padding: 10,
+                          font: {
+                            size: 14,
+                            weight: 300,
+                            family: "Roboto",
+                            style: 'normal',
+                            lineHeight: 2
+                          },
+                        }
+                      },
+                    },
+                  },
+                });
+
+                
+                // JS 335 Purchase Chart
+                const ctx_335 = document.getElementById('js335_Chart');
+                console.log(this.js_335);
+                this.js_335.sort((a, b) => {
+                  return new Date(a.purchase_date) - new Date(b.purchase_date); // descending
+                })
+                console.log(this.js_335);
+
+                var result = [];
+                this.js_335.reduce(function(res, value) {
+                  if (!res[value.purchase_date]) {
+                    res[value.purchase_date] = { purchase_date: value.purchase_date, quantity: 0 };
+                    result.push(res[value.purchase_date])
+                  }
+                  res[value.purchase_date].quantity += value.quantity;
+                  return res;
+                }, {});
+                this.js_335 = result;
+
+                for (var i = 0; i < this.js_335.length; i++){
+                  purchase_qty  = this.js_335[i]['quantity'];
+                  purchase_date = this.js_335[i]['purchase_date'];
+                  const [year, month, day] = purchase_date.split('-');
+                  purchase_date = day + '-' + month + '-' + year;
+                  this.labels_335.push(purchase_date);
+                  this.data_335.push(purchase_qty);
+                };
+
+                new Chart(ctx_335, {
+                  type: 'bar',
+                  data: {
+                    labels: this.labels_335,
+                    datasets: [{
+                      label: 'Qty. in Qtls.',
+                      tension: 0.4,
+                      data: this.data_335,
+                      borderWidth: 0,
+                      borderRadius: 4,
+                      borderSkipped: false,
+                      backgroundColor: "rgba(255, 255, 255, .8)",
+                      maxBarThickness: 40
+                    }]
+                  },
+                  options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                      legend: {
+                        display: false,
+                      }
+                    },
+                    interaction: {
+                      intersect: false,
+                      mode: 'index',
+                    },
+                    scales: {
+                      y: {
+                        grid: {
+                          drawBorder: false,
+                          display: true,
+                          drawOnChartArea: true,
+                          drawTicks: false,
+                          borderDash: [5, 5],
+                          color: 'rgba(255, 255, 255, .2)'
+                        },
+                        ticks: {
+                          suggestedMin: 0,
+                          suggestedMax: 500,
+                          beginAtZero: true,
+                          padding: 10,
+                          font: {
+                            size: 14,
+                            weight: 300,
+                            family: "Roboto",
+                            style: 'normal',
+                            lineHeight: 2
+                          },
+                          color: "#fff"
+                        },
+                      },
+                      x: {
+                        grid: {
+                          drawBorder: false,
+                          display: true,
+                          drawOnChartArea: true,
+                          drawTicks: false,
+                          borderDash: [5, 5],
+                          color: 'rgba(255, 255, 255, .2)'
+                        },
+                        ticks: {
+                          display: true,
+                          color: '#f8f9fa',
+                          padding: 10,
+                          font: {
+                            size: 14,
+                            weight: 300,
+                            family: "Roboto",
+                            style: 'normal',
+                            lineHeight: 2
+                          },
+                        }
+                      },
+                    },
+                  },
+                });
+              })
+              .catch(function (error) {
+                // handle error
+                console.log(error);
+              })
+          }
+        }).mount('#app')
+    </script>
+{% else %}
+    Login to view dashboard.
+{% endif %}
+{% endblock %}

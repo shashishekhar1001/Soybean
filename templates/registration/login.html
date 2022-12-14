@@ -1,0 +1,52 @@
+{% extends "base_generic.html" %}
+{% load crispy_forms_tags %} 
+
+
+{% block content %}
+
+  {% if form.errors %}
+    <div class="alert alert-warning text-white" role="alert">
+        <span class="alert-icon align-middle">
+          <span class="material-icons text-md">
+          thumb_up_off_alt
+          </span>
+        </span>
+        <span class="alert-text"><strong>Warning!</strong> Your username and password didn't match. Please try again!</span>
+    </div>
+    
+  {% endif %}
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>Your account doesn't have access to this page. To proceed,
+      please login with an account that has access.</p>
+    {% else %}
+      <p>Please login to see this page.</p>
+    {% endif %}
+  {% endif %}
+    <div class="card card-frame w-50">
+        <div class="card-body">
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="input-group input-group-dynamic my-3">
+                    <label for="id_username" class="form-label">Username:</label>
+                    <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username" class="form-control">
+                </div>
+                <div class="input-group input-group-dynamic my-3">
+                    <label for="id_password" class="form-label">Password:</label>
+                    <input type="password" name="password" autocomplete="current-password" required id="id_password" class="form-control">
+                </div>                
+                <br>
+                <input type="submit" class="btn btn-success btn-lg w-50" value="login">
+                <input type="hidden" name="next" value="{{ next }}">
+            </form>
+
+            {# Assumes you setup the password_reset view in your URLconf #}
+            <h4><a href="{% url 'password_reset' %}">Lost password?</a></h4>
+        </div>
+    </div>
+
+  
+
+  
+{% endblock %}
